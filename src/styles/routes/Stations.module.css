@@ -1,0 +1,32 @@
+.stations {
+  padding: 74px 20px;
+	min-height: 100%;
+	width: 100%;
+}
+.stations h2 {
+	margin-bottom: 25px;
+}
+.stationthumb {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	min-height: 70px;
+	padding: 15px;
+	background-color: rgb(240, 240, 240);
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+.stationthumb h3 {
+	margin-right: auto;
+}
+.stationthumb button {
+	height: 40px;
+	width: 40px;
+	border: none;
+	margin-left: 10px;
+	cursor: pointer;
+	border-radius: 6px;
+}
+.stationthumb button:hover {
+	background-color: rgb(216, 216, 216);
+}

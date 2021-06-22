@@ -1,0 +1,41 @@
+.departure {
+	padding: 10px;
+	background-color: rgb(240, 240, 240);
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+.departure p {
+	margin: 10px 0;
+}
+.type {
+	display: flex;
+	align-items: center;
+}
+.type p {
+	margin-right: 10px;
+}
+.type li {
+	display: inline-block;
+}
+.type li p {
+	display: none;
+}
+.platform, .togo {
+	padding-top: 5px;
+	font-size: 0.9em;
+}
+.metro {
+	font-weight: 500;
+	color: orange;
+}
+.nextstop {
+	margin-right: 10px;
+}
+.nextstop::before {
+	content: '>';
+	margin-right: 10px;
+}
+.nextstop:last-of-type::after {
+	content: '>';
+	margin-left: 10px;
+}

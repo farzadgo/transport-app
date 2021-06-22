@@ -1,0 +1,16 @@
+.details {
+	padding: 74px 20px;
+	min-height: 100%;
+	width: 100%;
+}
+.details h2 {
+	margin-bottom: 25px;
+}
+.bookmark {
+	position: absolute;
+	right: 20px;
+	top: 74px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
