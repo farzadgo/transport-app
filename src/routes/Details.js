@@ -8,19 +8,30 @@ import * as Icon from 'react-icons/md'
 import * as style from '../styles/routes/Details.module.css'
 
 
-const Details = ({ addStop }) => {
+const Details = ({ stops, addStop }) => {
 	// for @reach/router you just need to pass "id" as prop
 	const { id } = useParams()
 	const [data, setData] = useState('')
-	const [stop, setStop] = useState({ stopId: '', stopName: ''})
+	const [stop, setStop] = useState({ stopId: '', stopName: '' })
 	const [today, setToday] = useState('')
 	const iconProps = { color: '#F08080', size: 28 }
-
-	// console.log(id)
+	const [saved, setSaved] = useState(false)
 
 	const handleAdd = () => {
 		addStop(stop)
 	}
+
+	// console.log(saved)
+
+	useEffect(() => {
+		// console.log(stops)
+		if (stops.filter(e => e.stopId === stop.stopId).length !== 0) {
+			// console.log('it is saved')
+			setSaved(true)
+		} else {
+			setSaved(false)
+		}
+	}, [stop, stops])
 
 	useEffect(() => {
 		if (data.length) {
@@ -58,7 +69,10 @@ const Details = ({ addStop }) => {
 					<button
 						className={style.bookmark}
 						onClick={handleAdd} >
-							<Icon.MdFavorite {...iconProps} />
+							{ saved ?
+								<Icon.MdFavorite {...iconProps} /> :
+								<Icon.MdFavoriteBorder {...iconProps} />
+							}
 					</button>
 					{ data.map((item, i) => <Departure key={i} info={item} />) }
 				</div> :

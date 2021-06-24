@@ -7,8 +7,12 @@
 	margin-bottom: 15px;
 }
 .search {
+	/* position: relative; */
 	display: flex;
 	align-items: center;
+	justify-content: center
+	/* left: 50%; */
+	/* transform: translateX(-50%); */
 }
 .search input {
 	border-radius: 0;

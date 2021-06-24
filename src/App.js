@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Route, HashRouter as Router, Switch, useLocation } from 'react-router-dom'
+import { Route, HashRouter as Router, Switch } from 'react-router-dom'
 // import { Router } from '@reach/router'
 import Header from './components/Header'
 import Home from './routes/Home'
@@ -11,11 +11,19 @@ const App = () => {
 	const [stops, setStops] = useState([])
 
 	const addStop = (stop) => {
-		let newInput = [...stops, stop]
-		// IMPORTANT
-		setStops(newInput)
-		let inputString = JSON.stringify(newInput)
-		localStorage.setItem('stops', inputString)
+    // console.log(stop, stops)
+    let exists = stops.filter(e => e.stopId === stop.stopId)
+    if (exists.length === 0) {
+      // console.log('not exist')
+      let newInput = [...stops, stop]
+      // IMPORTANT
+      setStops(newInput)
+      let inputString = JSON.stringify(newInput)
+      localStorage.setItem('stops', inputString)
+    } else {
+      // console.log('exists')
+      delStop(stop.stopId)
+    }
 	}
 
 	const delStop = (id) => {
@@ -25,8 +33,6 @@ const App = () => {
 		let stopString = JSON.stringify(newStops)
 		localStorage.setItem('stops', stopString)
 	}
-
-	// console.log(stops)
 
 	useEffect(() => {
 		const getStops = () => {
@@ -39,9 +45,9 @@ const App = () => {
 		}
 		getStops()
 
-		// return () => {
-		// }
+		// return () => { }
 	}, [])
+
 
 	return (
     <Router>
@@ -52,10 +58,10 @@ const App = () => {
             <Home />
           </Route >
           <Route path="/details/:id" exact>
-            <Details  stops={stops} addStop={addStop} /> 
+            <Details stops={stops} addStop={addStop} /> 
           </Route>
           <Route path="/stations/" exact>
-            <Stations  stops={stops} delStop={delStop} />
+            <Stations stops={stops} delStop={delStop} />
           </Route>
         </Switch>
       </div>
