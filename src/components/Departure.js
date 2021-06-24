@@ -54,8 +54,8 @@ const Departure = ({ info }) => {
 
 			{ firstWord !== 'Ringbahn' && <p className={style.togo}> {nextStopovers.length - 1} stop to go </p> }
 			{ nextStopovers &&
-				nextStopovers.slice(1, 5).map(e => 
-					<span className={style.nextstop}>
+				nextStopovers.slice(1, 5).map((e, i) => 
+					<span key={i} className={style.nextstop}>
 						{e.stop.name}
 					</span>
 				)

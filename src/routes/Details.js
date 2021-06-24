@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 import Loader from '../components/Loader'
 import Departure from '../components/Departure'
 import { convertIsoTime } from '../utilities/helpers'
@@ -7,12 +8,15 @@ import * as Icon from 'react-icons/md'
 import * as style from '../styles/routes/Details.module.css'
 
 
-const Details = ({ id, addStop }) => {
-
+const Details = ({ addStop }) => {
+	// for @reach/router you just need to pass "id" as prop
+	const { id } = useParams()
 	const [data, setData] = useState('')
 	const [stop, setStop] = useState({ stopId: '', stopName: ''})
 	const [today, setToday] = useState('')
 	const iconProps = { color: '#F08080', size: 28 }
+
+	// console.log(id)
 
 	const handleAdd = () => {
 		addStop(stop)
@@ -56,7 +60,7 @@ const Details = ({ id, addStop }) => {
 						onClick={handleAdd} >
 							<Icon.MdFavorite {...iconProps} />
 					</button>
-					{ data.map(item => <Departure info={item} />) }
+					{ data.map((item, i) => <Departure key={i} info={item} />) }
 				</div> :
 				<Loader />
 			}

@@ -32,10 +32,10 @@
 	margin-right: 10px;
 }
 .nextstop::before {
-	content: '>';
+	content: '➝';
 	margin-right: 10px;
 }
 .nextstop:last-of-type::after {
-	content: '>';
+	content: '➝';
 	margin-left: 10px;
 }

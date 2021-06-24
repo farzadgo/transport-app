@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { navigate } from '@reach/router'
+import { useHistory } from 'react-router-dom'
+// import { navigate } from '@reach/router'
 import * as Icon from 'react-icons/md'
 import * as style from '../styles/routes/Stations.module.css'
 
@@ -20,7 +21,7 @@ const Stations = ({ stops, delStop }) => {
 		<div className={style.stations}>
 			<h2> Your favorite stations </h2>
 			{	stations ?
-				stations.map(item => <StationThumb info={item} delStop={delStop} />) :
+				stations.map(item => <StationThumb key={item.stopId} info={item} delStop={delStop} />) :
 				<div> No Favorite Stations </div>
 			}
 		</div>
@@ -31,6 +32,8 @@ export default Stations
 
 
 const StationThumb = ({ info, delStop }) => {
+
+	const history = useHistory()
 	const { stopId, stopName } = info
 
 	const handleDelete = e => {
@@ -42,7 +45,8 @@ const StationThumb = ({ info, delStop }) => {
 
 	const handleClick = e => {
 		e.preventDefault()
-		navigate(`/details/${stopId}`)
+		history.push(`/details/${stopId}`)
+		// navigate(`/details/${stopId}`)
 	}
 
 	return (

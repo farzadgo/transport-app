@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Router } from '@reach/router'
+import { Route, BrowserRouter as Router, Switch, useLocation } from 'react-router-dom'
+// import { Router } from '@reach/router'
 import Header from './components/Header'
 import Home from './routes/Home'
 import Details from './routes/Details'
@@ -43,14 +44,22 @@ const App = () => {
 	}, [])
 
 	return (
-		<div id="app">
-			<Header />
-			<Router>
-				<Home path="/" />
-				<Details path="/details/:id" addStop={addStop} />
-				<Stations path="/stations/" stops={stops} delStop={delStop} />
-			</Router>
-		</div>
+    <Router>
+      <div id="app">
+        <Header />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route >
+          <Route path="/details/:id" exact>
+            <Details  stops={stops} addStop={addStop} /> 
+          </Route>
+          <Route path="/stations/" exact>
+            <Stations  stops={stops} delStop={delStop} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
 	)
 }
 

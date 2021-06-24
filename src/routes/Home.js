@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { navigate } from '@reach/router'
+import { useHistory } from 'react-router-dom'
+// import { navigate } from '@reach/router'
 import Loader from '../components/Loader'
 import TrafficIcon from '../components/Trafficicon'
 import * as Icon from 'react-icons/md'
@@ -70,6 +71,7 @@ export default Home
 
 const StopThumb = ({ info }) => {
 
+	const history = useHistory()
 	const { id, name, products } = info
 	const iconProps = { color: '#2A2726', size: 32 }
 
@@ -77,7 +79,8 @@ const StopThumb = ({ info }) => {
 	const filtered = keys.filter(key => products[key])
 
 	const handleClick = () => {
-		navigate(`/details/${id}`)
+		history.push(`/details/${id}`)
+		// navigate(`/details/${id}`)
 	}
 
 	return (
@@ -86,7 +89,7 @@ const StopThumb = ({ info }) => {
 			<div className={style.info}>
 				<h3> {name} </h3>
 				<ul>
-					{ filtered.map(item => <TrafficIcon tag={item} />) }
+					{ filtered.map((item, i) => <TrafficIcon key={i} tag={item} />) }
 				</ul>
 			</div>
 
