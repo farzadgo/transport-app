@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Route, BrowserRouter as Router, Switch, useLocation } from 'react-router-dom'
+import { Route, HashRouter as Router, Switch, useLocation } from 'react-router-dom'
 // import { Router } from '@reach/router'
 import Header from './components/Header'
 import Home from './routes/Home'
