@@ -14,7 +14,7 @@ const Departure = ({ info }) => {
 		line,
 		platform,
 		when,
-		nextStopovers
+		// nextStopovers
 	} = info
 
 	const nameStyle = {
@@ -26,8 +26,7 @@ const Departure = ({ info }) => {
 		borderRadius: line.symbol === 'S' || line.product !== 'tram' && line.metro ? '20px' : '0',
 	}
 
-	let firstWord = direction.split(' ')[0]
-	// console.log(nextStopovers)
+	// let firstWord = direction.split(' ')[0]
 
 	useEffect(() => {
 		let time = convertIsoTime(when).time
@@ -52,14 +51,14 @@ const Departure = ({ info }) => {
 			{ platform && <p className={style.platform}> Platform <b> {platform} </b></p> }
 			{ line.metro && <p className={style.metro}><i> Metro </i></p> }
 
-			{ firstWord !== 'Ringbahn' && <p className={style.togo}> {nextStopovers.length - 1} stop to go </p> }
-			{ nextStopovers &&
+			{/* { firstWord !== 'Ringbahn' && <p className={style.togo}> {nextStopovers.length - 1} stop to go </p> } */}
+			{/* { nextStopovers &&
 				nextStopovers.slice(1, 5).map((e, i) => 
 					<span key={i} className={style.nextstop}>
 						{e.stop.name}
 					</span>
 				)
-			}
+			} */}
 
 		</div>
 	)
