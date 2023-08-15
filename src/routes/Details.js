@@ -50,11 +50,12 @@ const Details = ({ stops, addStop }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await axios(
-				`https://v5.vbb.transport.rest/stops/${id}/departures?stopovers=true`,
+				`https://v6.vbb.transport.rest/stops/${id}/departures?stopovers=true`,
 			)
-			setData(result.data)
+			setData(result.data.departures)
 		}
 		fetchData()
+		// console.log(data.departures);
 		console.log('DETAILS did mount')
 		return () => console.log('DETAILS unmounted')
 	}, [])

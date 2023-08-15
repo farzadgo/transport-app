@@ -29,7 +29,7 @@ const Home = () => {
 
 	const fetchData = async () => {
 		const result = await axios(
-			`https://v5.vbb.transport.rest/locations?query=${query}&results=5&addresses=false&poi=false`,
+			`https://v6.vbb.transport.rest/locations?query=${query}&results=5&addresses=false&poi=false`,
 		)
 		setData(result.data);
 		setLoading(false)
